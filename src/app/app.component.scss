@@ -1,0 +1,45 @@
+h1 {
+  text-align: center;
+  padding: 150px 0 50px 0;
+  font-size: 3.5rem;
+  color: #3949ab;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &-stepper {
+    width: 80%;
+
+    &__container {
+      padding: 30px;
+      border: 1px solid red;
+    }
+
+    &__input {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      column-gap: 15px;
+
+      &-uppercase {
+        text-transform: uppercase;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}

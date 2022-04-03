@@ -1,0 +1,80 @@
+<h1 primary>Gerador de Contratos</h1>
+
+<div class="form">
+  <mat-stepper linear #stepper class="form-stepper">
+    <mat-step [stepControl]="customerData">
+      <form autocomplete="off" [formGroup]="customerData">
+        <ng-template matStepLabel>Dados do cliente</ng-template>
+        <div class="form-stepper__input">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input class="form-stepper__input-uppercase" matInput formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input mask="000.000.000-99" matInput formControlName="cpf">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>RG</mat-label>
+            <input class="form-stepper__input-uppercase" mask="00.000.000-A" matInput formControlName="rg">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input mask="99999-999" matInput formControlName="zipcode">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city">
+          </mat-form-field>
+
+        </div>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+        </div>
+      </form>
+
+    </mat-step>
+    <mat-step [stepControl]="eventData">
+      <form [formGroup]="eventData">
+        <ng-template matStepLabel>Dados do evento</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Data</mat-label>
+          <input matInput formControlName="date" [matDatepicker]="date">
+          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+          <mat-datepicker #date></mat-datepicker>
+        </mat-form-field>
+        <div class="form-stepper__buttons">
+          <button mat-raised-button color="primary" matStepperPrevious>Voltar</button>
+          <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form autocomplete="off" [formGroup]="fileUpdate">
+        <ng-template matStepLabel>Done</ng-template>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Doc</mat-label>
+          <ngx-mat-file-input formControlName="file" placeholder="Upload docx template" #docx></ngx-mat-file-input>
+          <!-- <input formControlName="file" type="file" placeholder="Upload docx template" #docx> -->
+          <mat-icon matSuffix>file_upload</mat-icon>
+        </mat-form-field>
+
+        <div class="form-stepper__buttons">
+          <button mat-raised-button color="primary" matStepperPrevious>Voltar</button>
+          <button mat-raised-button color="primary" (click)="readDocxFile()">confirm</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>
+<router-outlet></router-outlet>
